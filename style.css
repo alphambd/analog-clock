@@ -1,0 +1,145 @@
+/* Import Google font - Poppings */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:  border-box;
+    font-family: 'Poppins' sans-serif;
+}
+:root {
+    --primary-color: #f6f7fb;
+    --white-color: #fff;
+    --black-color: #18191a;
+    --red-color: #e74c3c;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+}
+body.dark {
+    --primary-color: #242526;
+    --white-color: #18191a;
+    --black-color: #fff;
+    --red-color: #e74c3c;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+.container .clock {
+    display: flex;
+    height: 400px;
+    width: 400px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background: var(--white-color);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1), 0 25px 45px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+.clock label {
+    position: absolute;
+    inset: 20px;
+    text-align: center;
+    transform: rotate(calc(var(--i) * (360deg / 12)));
+}
+.clock label span {
+    display: inline-block;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--black-color);
+    transform: rotate(calc(var(--i) * (-360deg / 12)));
+}
+.container .indicator {
+    position: absolute;
+    height: 10px;
+    width: 10px;
+    display: flex;
+    justify-content: center;
+}
+.indicator::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    z-index: 100;
+    background: var(--black-color);
+    border: 4px solid var(--red-color);
+}
+.indicator .hand {
+    position: absolute;
+    height: 130px;
+    width: 4px;
+    bottom: 0;
+    border-radius: 25px;
+    transform-origin: bottom;
+    background: var(--red-color);
+}
+.hand.minute {
+    height: 120px;
+    width: 5px;
+    background: var(--black-color);
+}
+.hand.hour {
+    height: 100px;
+    width: 8px;
+    background: var(--black-color);
+}
+.mode-switch {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: 400;
+    display: inline-block;
+    color: var(--white-color);
+    background: var(--black-color);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+
+/*
+--------------------- Notes Calendar ---------------------
+display : felx;         // dispose les élément du conteneur de manière flexible
+align-items : center    // aligne les enfants sur l'axe transversalle (ici verticale)
+justify-content: center;// "    ....    "
+min-height: 100vh;      // hauteur minimale (100%) vh=viewport height (h d la vue)
+font-weight: 500;       // val entre 100 et 900 dont 400 la val normal, au dessus = gras
+line-height:            // contrôle l'espace entre les lignes de texte à l'intérieur d'1 element
+flex-wrap:  wrap;       // utilisé avec flexbox (display), pr dire si ls élmnts sont sur 1 ou +sieurs lignes
+                            wrap : +sieurs lignes, ils reviennent à la ligne si nécessaire
+                            nowrap : sur 1 ligne, ils rétrécissent si nécéssaire
+z-index : 1;            // ordre de supposition des élément z(profondeur), 1 elem avc z sup. au dessus d'1 avec z inf
+
+
+--------------------- Notes Clock  ---------------------
+--nomVariable: valeur;  // délare une variable en CSS
+prop: var(--nomVar);    // utilise une variable css
+:root { ... }           // C'est une pseudo-classe qui cible l'élément racine 
+                            du document, qui est généralement la balise <html>. 
+                            Dans ce contexte, elle est utilisée pour définir 
+                            des variables CSS globales.
+flex-direction: column; // Utiliser avec "display: flex;" indique la direction des 
+                            éléments flexibles (row/row-reverse/column/column-reverse)
+bap: 10px;              // utilisé avec flexbox, définit un esp. entre ls éléments flexibles
+inset: 20px;            // regroupe margin + padding, il spécifie (top, right, bottom, right) en même temps
+e::before{content: "";} // ::before -> pseudo-élément, créé un élément enfant 
+                            virtuel avant le contenu de l'élément ciblé par le sélecteur.  
+                            content: "" -> contenu du pseudo vide, signifie 
+                            que le pseudo-élément n'affichera aucun contenu.      
+                            NB: il existe le pseudo-elem ::afer 
+
+.class1.class2 {}        // élément ayant à la fois class1 et class2
+.class1 .class2 {}       // élément ayant class2 déscendans d'1 ayant class1
+line-style: none;        // enlève les puces ou les numéros (à appl. sur ul)
+text-decoration: none;   // enlève les ... comme le surlignement des liens
+
+
+                            
+*/
